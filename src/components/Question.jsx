@@ -4,7 +4,7 @@ import Answer from './Answer'
 
 function Question({ theQuestion }) {
     const { question } = theQuestion
-    console.log(theQuestion)
+    // console.log(theQuestion)
     return (
         <>
             <div className='quizzical--question'>

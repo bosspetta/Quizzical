@@ -9,10 +9,15 @@ function Answer({ theQuestion }) {
         return Math.random() - 0.5;
     })
     const theAnswers = allAnswers.map((item, i) => (
-        <span className='quizzical--answer' key={i} onClick={handleClick}>{item}</span>
+        // <span className='quizzical--answer' key={i} onClick={handleClick}>{item}</span>
+        <div className='quizzical--answer-wrapper' key={i}>
+            <label htmlFor={`answer-${i}`}>{item}</label>
+            <input aria-label={`answer-${item}`} className='quizzical--answer' type='radio' name='answer' id={`answer-${i}`} onClick={handleClick} />
+        </div>
     ))
     function handleClick(e) {
-        e.target.style.fontWeight = 'bold'
+        console.log(e.target)
+        e.target.previousSibling.classList.add('quizzical--answer--selected')
     }
     function checkAnswers(e) {
         const answerValue = e.target.textContent

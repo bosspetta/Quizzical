@@ -16,7 +16,9 @@ function Questions() {
     return (
         <>
             <h1><Link to='/'>Go back</Link> - Questions page!</h1>
-            {questionsItems}
+            <form id='questions-form'>
+                {questionsItems}
+            </form>
             <button type='button'>Check answers</button>
         </>
     )
