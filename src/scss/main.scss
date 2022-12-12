@@ -4,6 +4,7 @@
     --clr-default: #293264;
     --clr-background: #f5f7fb;
     --clr-blue-01: #4D5B9E;
+    --clr-blue-02: #d6dbf5;
     --clr-highlighted: #fffad1;
 }
 
@@ -25,54 +26,120 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
 
-.quizzical--start-page {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.quizzical--wrapper {
-    &::before {
-        content: url('../img/ornament-01.svg');
-        width: 30%;
-        height: auto;
-        position: fixed;
+.quizzical {
+    &--start-page {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    &--wrapper {
+        &::before {
+            content: url('../img/ornament-01.svg');
+            width: 30%;
+            height: auto;
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+        &::after {
+            content: url('../img/ornament-02.svg');
+            width: 30%;
+            height: auto;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            line-height: 0;
+        }
+        &::before,
+        &::after {
+            z-index: -1;
+        }
+    }
+    &--btn {
+        border: none;
+        background: none;
+        background-color: var(--clr-blue-01);
+        color: white;
+        font-weight: 600;
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: inline-block;
+        text-decoration: none;
+        &:focus,
+        &:focus-visible {
+            outline: none;
+            border: 2px solid var(--clr-highlighted);
+            box-shadow: 0 0 10px var(--clr-default);
+        }
+    }
+    &--back {
+        display: inline-flex;
+        text-indent: -9999px;
+        width: 40px;
+        height: 40px;
+        background: var(--clr-blue-01) url('../img/ico-back.svg') center center no-repeat;
+        background-size: auto 15px;
+        position: absolute;
         top: 0;
-        right: 0;
-    }
-    &::after {
-        content: url('../img/ornament-02.svg');
-        width: 30%;
-        height: auto;
-        position: fixed;
-        bottom: 0;
         left: 0;
-        line-height: 0;
     }
-    &::before,
-    &::after {
-        z-index: -1;
+    &--subtitle {
+        margin: .75rem 0 2.5rem;
     }
-}
-
-.quizzical--btn {
-    background-color: var(--clr-blue-01);
-    color: white;
-    font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 10px;
-    display: inline-block;
-    text-decoration: none;
-    &:focus,
-    &:focus-visible {
-        outline: none;
-        border: 2px solid var(--clr-highlighted);
-        box-shadow: 0 0 10px var(--clr-default);
+    &--questions {
+        padding: 3rem;
+        max-width: 50rem;
+        margin: 0 auto;
+        position: relative;
     }
-}
-
-.quizzical--subtitle {
-    margin: .75rem 0 2.5rem;
+    &--question {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--clr-blue-02);
+    }
+    &--answers {
+        display: flex;
+        margin-top: .5rem;
+    }
+    &--answer-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-inline: .5rem;
+        position: relative;
+        max-width: 175px;
+        text-align: center;
+        font-size: .875rem;
+        label {
+            padding: .5rem 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--clr-default);
+            background-color: white;
+            transition: border-color .3s ease;
+            transition: background-color .3s ease;
+        }
+        &:first-child {
+            margin-left: 0;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    &--answer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        &:checked + label {
+            background-color: var(--clr-blue-02);
+            border-color: var(--clr-blue-02);
+        }
+    }
+    &--buttons-wrapper {
+        text-align: center;
+    }
 }

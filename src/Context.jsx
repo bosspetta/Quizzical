@@ -5,7 +5,7 @@ const Context = React.createContext()
 function ContextProvider({children}) {
     const [allQuestions, setAllQuestions] = useState([])
 
-    const url = 'https://opentdb.com/api.php?amount=10'
+    const url = 'https://opentdb.com/api.php?amount=5'
 
     async function getItems() {
         const res = await fetch(url)

@@ -2,14 +2,22 @@ import React from 'react'
 
 import Answer from './Answer'
 
-function Question({ theQuestion }) {
+function Question({ theQuestion, index }) {
     const { question } = theQuestion
-    // console.log(theQuestion)
+
+    function htmlDecode(input){
+        var e = document.createElement('div');
+        e.innerHTML = input;
+        return e.childNodes[0].nodeValue;
+    }
+
     return (
         <>
             <div className='quizzical--question'>
-                <h2>{question}</h2>
-                <Answer theQuestion={theQuestion} />
+                <h2>{htmlDecode(question)}</h2>
+                <div className="quizzical--answers">
+                    <Answer theQuestion={theQuestion} qIndex={index} />
+                </div>
             </div>
         </>
     )

@@ -9,18 +9,18 @@ function Questions() {
 
     const questionsItems = allQuestions.map((item, i) => {
         return (
-            <Question key={i} theQuestion={item} />
+            <Question key={i} theQuestion={item} index={i} />
         )
     })
 
     return (
-        <>
-            <h1><Link to='/'>Go back</Link> - Questions page!</h1>
+        <div className='quizzical--questions'>
+            <Link to='/' className='quizzical--back' title="Back to home">Go back</Link>
             <form id='questions-form'>
                 {questionsItems}
             </form>
-            <button type='button'>Check answers</button>
-        </>
+            <p className='quizzical--buttons-wrapper'><button type='button' className='quizzical--btn'>Check answers</button></p>
+        </div>
     )
 }
 
